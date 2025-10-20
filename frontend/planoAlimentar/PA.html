@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="PA.css">
+    <link rel="icon" href="../assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Plano Alimentar</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="../assets/logo.png" alt="" draggable="false" />
+        </div>
+
+        <ul class="nav-links">
+            <li class="links">
+                <i class="fa-solid fa-house fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <a href="../pagina_principal/index.html">Inicio</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-cog fa-spin fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <a href="../config/config.html">Configurações</a>
+            </li>
+            <li class="links">
+                <i class="fa-brands fa-nutritionix fa-bounce fa-xl"
+                    style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="">Buscar Nutri</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-message fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="../chat/chat.html">Chat</a>
+            </li>
+        </ul>
+
+        <button class="btn" onclick="SignUp()">
+            <i class="fa-solid fa-user fa-3x" style="color: black;"></i>
+        </button>
+    </header>
+
+    <main>
+        <div class="title-PA">
+            <h2>Plano alimentar</h2>
+        </div>
+        <div class="ADD">
+            <label for="alimento">Escolha um alimento:</label>
+            <!-- <input type="text" id="alimento"> -->
+            <select id="alimento">
+                <option value="Arroz">Arroz</option>
+                <option value="Feijão">Feijão</option>
+                <option value="Frango">Frango</option>
+                <option value="Ovo">Ovo</option>
+                <option value="Batata">Batata</option>
+                <option value="Peito de frango">Peito de frango</option>
+                <option value="Salmão">Salmão</option>
+                <option value="Batata doce">Batata doce</option>
+                <option value="Banana">Banana</option>
+                <option value="Amêndoas">Amêndoas</option>
+                <option value="Abacaxi">Abacaxi</option>
+                <option value="Melancia">Melancia</option>
+                <option value="Camarão">Camarão</option>
+                <option value="Ostras">Ostras</option>
+                <option value="Lagosta">Lagosta</option>
+                <!-- <option value="Mulher">Mulher Peituda</option> -->
+            </select>
+            <button onclick="adicionarAlimento()">Adicionar</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Alimento</th>
+                    <th>Carboidratos (g)</th>
+                    <th>Proteínas (g)</th>
+                    <th>Gordura (g)</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+                <!-- <tr>
+                    <td id="nomeAlimento">-</td>
+                    <td id="carboidratos">-</td>
+                    <td id="proteinas">-</td>
+                    <td id="gordura">-</td>
+                </tr> -->
+            </tbody>
+        </table>
+
+    </main>
+
+    <script src="PA.js"></script>
+</body>

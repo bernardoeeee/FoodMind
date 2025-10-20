@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+    --cor-texto: #0B3142;
+    --cor-botoes: #78832d;
+    --cor-card: #4b810a;
+    --cor-caixa: #889d45;
+    --cor-fundo: #FFFFF2;
+}
+
+/* #60712F
+#345511 */
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    font-family: "Geist Mono", monospace;
+    color: #0B3142;
+}
+
+header {
+    background-color: var(--cor-caixa);
+    /* max-width: 1200px; */
+    margin: auto;
+    /* padding: 2rem 1rem; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+}
+
+.nav-logo {
+    display: flex;
+    height: 15vh;
+    width: auto;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+}
+
+.links a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: var(--cor-fundo);
+    font-size: large;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #2F5233;
+    transition: all 0.3s ease;
+}
+
+.links a:hover::after {
+    width: 75%;
+}
+
+.links i {
+    margin-right: 5px;
+    /* display: flex; */
+    align-items: center;
+}
+
+.btn {
+    background: transparent;
+    color: black;
+    display: flex;
+    margin-right: 30px;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+
+.image {
+    display: flex;
+    height: 25rem;
+    width: 25rem;
+    border-radius: 3rem;
+    box-shadow: 23px 23px 10px -5px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 4rem 2rem;
+    gap: 8rem;
+}
+
+
+container {
+    position: relative;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+container .content h2 {
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+container .content h4 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+.title_receitas {
+    /* text-decoration:underline #2F5233; */
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* RECEITAS */
+
+.PrimeiraFileira {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+}
+
+.card {
+    border-radius: 12px;
+    border: 1px solid black;
+    background-color: #94C973;
+    cursor: pointer;
+}
+
+.card img {
+    height: 14rem;
+    width: 17.9rem;
+    border-radius: 12px 12px 0 0;
+    display: block;
+    margin: auto;
+}
+
+.card-title {
+    text-align: center;
+    font-size: large;
+}
+
+.card-body {
+    background-color: var(--cor-card);
+    color: white;
+    border-radius: 0px 0px 12px 12px;
+    border: 1px solid black;
+}
+
+
+/* Footer */
+footer.view {
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-caixa);
+}
+
+
+
+.block:nth-child(1) {
+    background: var(--cor-caixa);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        scale: 0.5;
+        transform: translateX(-100px);
+        /* clip-path: inset(100% 100% 100% 100%); */
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+        transform: translateX(0px);
+        /* clip-path: inset(0 0 0 0); */
+    }
+}
+
+
+.block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10rem;
+    height: 110px;
+    width: 100%;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 10%;
+}
+
+
+.logo-footer {
+    width: 100px;
+    height: auto;
+}
+
+.block h4 {
+    color: var(--cor-fundo);
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+
+button {
+    background: transparent;
+    color: var(--cor-fundo);
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.block i {
+    display: flex;
+    align-items: center;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modalHowToMake {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.modal h4 {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+}

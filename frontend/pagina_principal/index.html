@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="../assets/logo.png" type="image/jpg" />
+  <title>FoodMind</title>
+</head>
+
+<body>
+  <header>
+    <div class="nav-logo">
+      <img src="../assets/logo.png" alt="" draggable="false" />
+    </div>
+
+    <ul class="nav-links">
+      <li class="links">
+        <i class="fa-solid fa-cog fa-spin fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+        <a href="../config/config.html">Configurações</a>
+      </li>
+      <li class="links">
+        <i class="fa-solid fa-carrot fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+        <a href="../planoAlimentar/PA.html">Plano Alimentar</a>
+      </li>
+      <li class="links">
+        <i class="fa-brands fa-nutritionix fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black"></i>
+        <a href="">Buscar Nutri</a>
+      </li>
+      <li class="links">
+        <i class="fa-solid fa-message fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black"></i>
+        <a href="../chat/chat.html">Chat</a>
+      </li>
+    </ul>
+
+    <button class="btn" onclick="SignUp()">
+      <i class="fa-solid fa-user fa-3x" style="color: black"></i>
+    </button>
+  </header>
+
+  <container class="container">
+    <div class="content">
+      <!-- <span class="blur"></span>
+      <span class="blur"></span> -->
+      <h2>Bem-vindo ao <span>FoodMind</span></h2>
+      <h4>
+        O FoodMind é um site pensado para quem busca melhorar a alimentação e
+        adotar um estilo de vida saudável, contando com o apoio de
+        nutricionistas especializados e um chat interativo para tirar dúvidas
+        em tempo real. Nele, você encontra receitas práticas e saborosas
+        alinhadas aos seus objetivos, dicas personalizadas para otimizar sua
+        dieta, orientações sobre planejamento alimentar e artigos informativos
+        sobre nutrição e bem-estar. Além disso, o site oferece um espaço
+        acolhedor onde você pode se inspirar, compartilhar experiências e
+        aprender a transformar sua relação com a comida de maneira leve e
+        prazerosa.
+      </h4>
+    </div>
+    <img class="image" src="../assets/carrot.jpg" draggable="false" />
+  </container>
+
+
+
+  <div class="title_receitas">
+    <h2>Receitas</h2>
+  </div>
+
+
+  <section class="PrimeiraFileira">
+    <div class="card" style="width: 18rem">
+      <img src="../assets/grilled-chicken-salad-lead.avif" alt="frango grelhado com folhas de salada" draggable="false">
+      <div class="card-body">
+        <h2 class="card-title">Frango grelhado com folhas de alface</h2>
+        <h4 class="card-text"></h4>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img src="../assets/Raspberry-Peach-Mango Smoothie Bowl.jpg" class="card-img-top" alt="." draggable="false" />
+      <div class="card-body">
+        <h2 class="card-title">Tigela de sorvete com framboesa pêssego e manga</h2>
+        <h4 class="card-text"></h4>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img src="../assets/Easy-Chiecken-Caesar-Salad-Wraps.jpg" class="card-img-top" alt="." draggable="false" />
+      <div class="card-body">
+        <h2 class="card-title">Burrito de frango com salada</h2>
+        <h4 class="card-text"></h4>
+      </div>
+    </div>
+  </section>
+
+  <footer class="view">
+    <div class="block">
+      <img class="logo-footer" src="../assets/logo.png" alt="logo-footer">
+      <h4>Projeto desenvolvido por <br>Bernardo Varisco Fleck®</h4>
+      <button onclick="GoToInstagram('https://www.instagram.com/')"><i
+          class="fa-brands fa-instagram fa-3x"></i></button>
+      <button onclick="GoToGitHub('https://github.com/bernardoeeee')"><i
+          class="fa-brands fa-square-github fa-3x"></i></button>
+    </div>
+  </footer>
+
+
+
+
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle">Título da Receita</h2>
+      <h4 id="modalTopics">Tópicos da receita</h4>
+      <ul id="modalSteps">
+        
+      </ul>
+      <h4 class="modalHowToMake" id="modalHowToMake">Modo de preparo</h4>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/8a3618c51f.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

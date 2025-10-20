@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="macro.css">
+    <link rel="icon" href="/frontend/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Macronutrientes</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="/frontend/assets/logo.png" alt="" draggable="false" />
+        </div>
+
+        <ul class="nav-links">
+            <li class="links">
+                <i class="fa-solid fa-house fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <a href="/frontend/pagina_principal/index.html">Inicio</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-carrot fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="/frontend/planoAlimentar/PA.html">Plano Alimentar</a>
+            </li>
+            <li class="links">
+                <i class="fa-brands fa-nutritionix fa-bounce fa-xl"
+                    style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="">Buscar Nutri</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-message fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="/frontend/chat/chat.html">Chat</a>
+            </li>
+        </ul>
+
+        <button class="btn" onclick="SignUp()">
+            <i class="fa-solid fa-user fa-3x" style="color: black;"></i>
+        </button>
+    </header>
+
+    <main>
+        <div class="title-changeProfile">
+            <h2>Macronutrientes</h2>
+        </div>
+        <div class="container">
+            <div class="sidebar">
+                <button onclick="GoToChanceProfile()">Personalizar Perfil</button>
+                <button>Lembretes</button>
+                <button onclick="GoToConfig()">Configurações</button>
+            </div>
+        </div>
+
+        <div class="conteudo-personalizacao">
+            <div class="macro-explicacoes">
+                <div class="macro">
+                    <h2>🍞 Carboidratos</h2>
+                    <p>Fonte de energia. Presentes em pães, frutas, arroz, massas.</p>
+                </div>
+                <div class="macro">
+                    <h2>🥚 Proteínas</h2>
+                    <p>Responsáveis pela construção e reparo dos tecidos. Ex: carnes, ovos, feijão.</p>
+                </div>
+                <div class="macro">
+                    <h2>🥑 Gorduras boas</h2>
+                    <p>Importantes para hormônios e absorção de vitaminas. Ex: azeite, castanhas, abacate.</p>
+                </div>
+            </div>
+
+            <div id="grafico-container">
+                <canvas id="graficoMacronutrientes"></canvas>
+            </div>
+            <div class="block">
+
+                <div class="dicas">
+                    <h2>📌 Dicas Rápidas:</h2>
+                    <ul>
+                        <li>Equilibre: 50% carboidrato, 30% proteína, 20% gordura (varia por objetivo).</li>
+                        <li>Não corte todos os carboidratos — eles são sua fonte de energia.</li>
+                        <li>Prefira gorduras boas do que de frituras ou industrializados.</li>
+                    </ul>
+                </div>
+
+                <div class="sugestoes">
+                    <h2>🍽️ Sugestão de Refeição:</h2>
+                    <p id="sugestaoRefeicao">Clique no botão para receber uma sugestão.</p>
+                    <button onclick="sugerirRefeicao()">Sugestão de refeição</button>
+                </div>
+
+                <div style="text-align:center; margin-top: 30px;">
+                    <a href="https://viverbem.unimed.coop.br/mude-1-habito/alimentacao-saudavel/o-que-sao-micro-e-macro-nutrientes/"
+                        target="_blank">🔗 Saiba mais
+                        sobre
+                        macronutrientes</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="macro.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="config.css">
+    <link rel="icon" href="../assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Configurações</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="../assets/logo.png" alt="" draggable="false" />
+        </div>
+
+        <ul class="nav-links">
+            <li class="links">
+                <i class="fa-solid fa-house fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <a href="../pagina_principal/index.html">Inicio</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-carrot fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="../planoAlimentar/PA.html">Plano Alimentar</a>
+            </li>
+            <li class="links">
+                <i class="fa-brands fa-nutritionix fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="">Buscar Nutri</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-message fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="../chat/chat.html">Chat</a>
+            </li>
+        </ul>
+
+        <button class="btn" onclick="SignUp()">
+            <i class="fa-solid fa-user fa-3x" style="color: black;"></i>
+        </button>
+    </header>
+
+    <main>
+        <div class="title-config">
+            <h2>Configurações</h2>
+        </div>
+        <div class="container">
+            <div class="sidebar">
+                <button onclick="GoToProfileChanges()">Personalizar perfil</button>
+                <button>Lembretes</button>
+                <button onclick="GoToMacro()">Macronutrientes</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+</body>
+
+</html>

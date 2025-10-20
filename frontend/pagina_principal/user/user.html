@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodMind - Usuário</title>
+    <link rel="icon" href="/frontend/assets/logo.png">
+    <link rel="stylesheet" href="user.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>FoodMind - Usuário</h1>
+        </div>
+        <div class="backToStart">
+            <a href="../index.html"><i class="fa-solid fa-arrow-left fa-3x"></i></a>
+        </div>
+
+    </header>
+    <main>
+        <div class="container">
+            <div id="Informacoes" class="description"></div>
+        </div>
+    </main>
+    <!-- <button class="botaoEditar">Salvar</button> -->
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Editar Usuario</h2>
+            <form>
+                <div class="modal-field">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome">
+                </div>
+                <div class="modal-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="modal-field">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha">
+                </div>
+                <button class="botaoEditar" onclick="edit(event)">Salvar</button>
+            </form>
+        </div>
+        
+    </div>
+
+
+    <script src="user.js"></script>
+    <script src="https://kit.fontawesome.com/8a3618c51f.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="personalizarPerfil.css">
+    <link rel="icon" href="/frontend/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Personalizar Perfil</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="/frontend/assets/logo.png" alt="" draggable="false" />
+        </div>
+
+        <ul class="nav-links">
+            <li class="links">
+                <i class="fa-solid fa-house fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <a href="/frontend/pagina_principal/index.html">Inicio</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-carrot fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="/frontend/planoAlimentar/PA.html">Plano Alimentar</a>
+            </li>
+            <li class="links">
+                <i class="fa-brands fa-nutritionix fa-bounce fa-xl"
+                    style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="">Buscar Nutri</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-message fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="/frontend/chat/chat.html">Chat</a>
+            </li>
+        </ul>
+
+        <button class="btn" onclick="SignUp()">
+            <i class="fa-solid fa-user fa-3x" style="color: black;"></i>
+        </button>
+    </header>
+
+    <main>
+        <div class="title-changeProfile">
+            <h2>Personalizar Perfil</h2>
+        </div>
+        <div class="container">
+            <div class="sidebar">
+                <button onclick="GoToConfig()">Configurações</button>
+                <button>Lembretes</button>
+                <button onclick="GoToMacro()">Macronutrientes</button>
+            </div>
+        </div>
+
+
+        <div class="conteudo-personalizacao">
+
+            <!-- Objetivos Pessoais -->
+            <section class="secao">
+                <h3>🎯 Objetivos Pessoais</h3>
+                <p>Escolha o que você deseja alcançar com sua alimentação. Isso nos ajuda a te dar dicas melhores!</p>
+                <div class="opcoes">
+                    <label><input type="checkbox"> Ter mais energia</label>
+                    <label><input type="checkbox"> Melhorar foco nos estudos</label>
+                    <label><input type="checkbox"> Cuidar da saúde mental</label>
+                    <label><input type="checkbox"> Controlar o peso</label>
+                    <label><input type="checkbox"> Ter uma alimentação mais equilibrada</label>
+                </div>
+            </section>
+
+            <!-- Preferências Alimentares -->
+            <section class="secao">
+                <h3>🍽️ Preferências Alimentares</h3>
+                <p>Tem algo que você evita ou prefere comer? Nos conte!</p>
+                <div class="opcoes">
+                    <label><input type="checkbox"> Vegetariano(a)</label>
+                    <label><input type="checkbox"> Vegano(a)</label>
+                    <label><input type="checkbox"> Sem lactose</label>
+                    <label><input type="checkbox"> Sem glúten</label>
+                    <label><input type="text" placeholder="Alergias ou restrições"></label>
+                </div>
+            </section>
+
+            <!-- Rotina Pessoal -->
+            <section class="secao">
+                <h3>🕒 Sua Rotina</h3>
+                <p>Isso nos ajuda a sugerir horários e lembretes mais eficientes:</p>
+                <div class="opcoes">
+                    <label>Acordo às: <input type="time"></label><br>
+                    <label>Almoço às: <input type="time"></label><br>
+                    <label>Lanche da tarde: <input type="time"></label><br>
+                    <label>Janta às: <input type="time"></label><br>
+                </div>
+            </section>
+
+        </div>
+
+
+    </main>
+
+    <script src="personalizarPerfil.js"></script>
+</body>
+
+</html>

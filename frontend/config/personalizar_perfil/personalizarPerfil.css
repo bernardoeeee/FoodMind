@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+    --cor-texto: #0B3142;
+    --cor-botoes: #78832d;
+    --cor-card: #4b810a;
+    --cor-caixa: #889d45;
+    --cor-fundo: #FFFFF2;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    font-family: "Geist Mono", monospace;
+    color: var(--cor-texto);
+    height: 100vh;  
+    overflow-y: hidden;
+}
+
+header {
+    background-color: var(--cor-caixa);
+    /* max-width: 1200px; */
+    margin: auto;
+    /* padding: 2rem 1rem; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+}
+
+.nav-logo {
+    display: flex;
+    height: 15vh;
+    width: auto;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+}
+
+.links a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: var(--cor-fundo);
+    font-size: large;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #2F5233;
+    transition: all 0.3s ease;
+}
+
+.links a:hover::after {
+    width: 75%;
+}
+
+.links i {
+    margin-right: 5px;
+    /* display: flex; */
+    align-items: center;
+}
+
+.btn {
+    background: transparent;
+    color: black;
+    display: flex;
+    margin-right: 30px;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+
+.container {
+    width: 800px;
+    height: 500px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+        "sidebar";
+}
+
+.title-changeProfile {
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    margin-top: 5rem;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-right: 2px solid black;
+}
+
+.sidebar button {
+    background-color: #fffff5;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+.sidebar button:hover {
+    background-color: var(--cor-botoes);
+    transform: translateY(-10%);
+}
+
+.conteudo-personalizacao {
+    position: absolute;
+    top: 28%;
+    left: 20%;
+    right: 20px;
+    bottom: 120px;
+    size-adjust: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 25px 20px;
+    border-radius: 18px;
+}
+
+.conteudo-personalizacao::-webkit-scrollbar-thumb {
+    background-color: var(--cor-card);
+    border-radius: 10px;
+}
+
+.conteudo-personalizacao::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+.secao {
+    background-color: #f6f6e7;
+    padding: 20px;
+    border: 1px solid var(--cor-card);
+    border-radius: 15px;
+}
+
+.secao h3 {
+    color: var(--cor-caixa);
+    margin-bottom: 10px;
+}
+
+.opcoes label {
+    display: block;
+    margin: 10px 0;
+    font-weight: 500;
+}

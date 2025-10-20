@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+    --cor-texto: #0B3142;
+    --cor-botoes: #78832d;
+    --cor-card: #345511;
+    --cor-caixa: #60712F;
+    --cor-fundo: #FFFFF2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Geist Mono", monospace;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+header {
+    position: relative;
+    height: 70px;
+    background-color: var(--cor-fundo);
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: center;
+    padding: 0 2vw;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 3px;
+}
+
+.backToStart a {
+    text-decoration: none;
+}
+
+.backToStart i {
+    color: var(--cor-botoes);
+}
+
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--cor-card);
+    padding: 40px 10px;
+    border-radius: 20px;
+    box-shadow: var(--cor-sombra);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.photo {
+    width: 150px;
+    height: auto;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: .9rem;
+    color: white;
+    /* font-family: monospace; */
+}
+
+.description h2 {
+    margin: 5px 0;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+    align-items: center;
+}
+
+.botoes button {
+    transition: all 0.5s ease-in-out;
+    background: transparent;
+    cursor: pointer;
+}
+
+.botoes button:hover {
+    transform: translateY(-5px);
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.modal-field label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    border: none;
+    /* Remove border */
+    width: auto;
+    /* Remove fixed width */
+    padding: 0;
+}
+
+.modal-field input {
+    border: 1px solid #888;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.botaoEditar {
+    background-color: var(--cor-botoes);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

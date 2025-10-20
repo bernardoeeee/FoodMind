@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+    --cor-texto: #0B3142;
+    --cor-botoes: #78832d;
+    --cor-card: #4b810a;
+    --cor-caixa: #889d45;
+    --cor-fundo: #FFFFF2;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    font-family: "Geist Mono", monospace;
+    color: var(--cor-texto);
+}
+
+header {
+    background-color: var(--cor-caixa);
+    /* max-width: 1200px; */
+    margin: auto;
+    /* padding: 2rem 1rem; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+}
+
+.nav-logo {
+    display: flex;
+    height: 15vh;
+    width: auto;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+}
+
+.links a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: var(--cor-fundo);
+    font-size: large;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #2F5233;
+    transition: all 0.3s ease;
+}
+
+.links a:hover::after {
+    width: 75%;
+}
+
+.links i {
+    margin-right: 5px;
+    /* display: flex; */
+    align-items: center;
+}
+
+.btn {
+    background: transparent;
+    color: black;
+    display: flex;
+    margin-right: 30px;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.title-PA {
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+table {
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #EDEBE9;
+    margin-top: 2rem;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+input {
+    padding: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: var(--cor-botoes);
+    color: white;
+    border: none;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+.ADD {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 8px;
+}
+
+.ADD input {
+    background-color: #EDEBE9;
+    border-bottom: 0.5px solid var(--cor-texto);
+    border-radius: 5px;
+}
+
+.ADD label {
+    text-decoration: underline 1px;
+    font-size: large;
+}

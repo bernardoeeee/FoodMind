@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="../assets/logo.png">
+    <link rel="stylesheet" href="SignUp.css">
+    <title>Login & Cadastro</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Criar uma conta</h1>
+                <div class="social-icon">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                
+                <input id="nameCadastro" type="text" placeholder="Nome">
+                <input id="emailCadastro" type="email" placeholder="Email">
+                <input id="passwordCadastro" type="password" placeholder="Senha" >
+                <button onclick="signUp(event)">Registar</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Entrar na conta</h1>
+                <div class="social-icon">
+                    <a href="../pagina_principal/index.html" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                
+                <input id="nameLogin" type="text" placeholder="Nome">
+                <input id="emailLogin" type="email" placeholder="Email">
+                <input id="passwordLogin" type="password" placeholder="Senha">
+                <a href="#">Esqueceu a senha?</a>
+                <button onclick="signIn(event)">Entrar</button>
+            </form>
+
+
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Olá, amigo!</h1>
+                    <p>Registre-se com seus detalhes pessoais para utilizar ao máximo o site</p>
+                    <button class="hidden" id="login">Entrar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Seja bem-vindo!</h1>
+                    <p>Entre com seus detalhes pessoais para usar ao máximo o site</p>
+                    <button class="hidden" id="register">Resgistar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="SignUp.js"></script>
+</body>
+</html>

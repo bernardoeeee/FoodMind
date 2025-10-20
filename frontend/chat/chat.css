@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+    --cor-texto: #0B3142;
+    --cor-botoes: #78832d;
+    --cor-card: #4b810a;
+    --cor-caixa: #889d45;
+    --cor-fundo: #FFFFF2;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    font-family: "Geist Mono", monospace;
+    color: var(--cor-texto);
+}
+
+header {
+    background-color: var(--cor-caixa);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+}
+
+.nav-logo {
+    display: flex;
+    height: 15vh;
+    width: auto;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+}
+
+.links a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: var(--cor-fundo);
+    font-size: large;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #2F5233;
+    transition: all 0.3s ease;
+}
+
+.links a:hover::after {
+    width: 75%;
+}
+
+.links i {
+    margin-right: 5px;
+    align-items: center;
+}
+
+.btn {
+    background: transparent;
+    color: black;
+    display: flex;
+    margin-right: 30px;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+
+
+.container {
+    width: 800px;
+    height: 500px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+        "sidebar";
+}
+
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    margin-top: 5rem;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-right: 2px solid black;
+}
+
+.sidebar button {
+    background-color: #fffff5;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    padding: 10px 50px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+.sidebar button:hover {
+    background-color: var(--cor-botoes);
+    transform: translateY(-10%);
+}
+
+
+.footer {
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputs-container {
+    display: flex;
+    gap: 10px;
+}
+
+.footer input[type="text"] {
+    padding: 15px 10px;
+    background: #DAF2CF;
+    border-radius: 20px;
+    width: 500px;
+    color: var(--cor-textos);
+    border: 1px solid black;
+}
+
+.footer input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    color: var(--cor-texto);
+    padding: 10px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button .custom-send-button {
+    color: var(--cor-texto);
+    padding: 10px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+    background-color: var(--cor-botoes);
+}
+
+.footer button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.footer button i {
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+#messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.FileiraTextos {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20px;
+    bottom: 120px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 25px 20px;
+    border-radius: 18px;
+    background: #f4f8ee;
+    border: 1.5px solid #c7d7b5;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.08);
+}
+
+.FileiraTextos .mensagem.sent {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #2b6b2a 40%, #4e8a3a 100%);
+    color: white;
+    border-radius: 18px 18px 6px 18px;
+    text-align: right;
+}
+
+.FileiraTextos .mensagem.received {
+    align-self: flex-start;
+    background: linear-gradient(180deg, #eaf3df 0%, #d6e6bf 100%);
+    color: #0B3142;
+    border-radius: 18px 18px 18px 6px;
+    border: 1px solid rgba(75, 75, 75, 0.06);
+    text-align: left;
+}
+
+.FileiraTextos .mensagem .msg-meta {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.FileiraTextos .mensagem .msg-text {
+    white-space: pre-wrap;
+    line-height: 1.3;
+}
+
+.FileiraTextos .mensagem .chat-image {
+    display: block;
+    margin-top: 8px;
+    border-radius: 10px;
+    object-fit: cover;
+    max-width: 300px;
+}
+
+/* selected user button */
+.online-user button.selected {
+    background: var(--cor-botoes);
+    color: white;
+    transform: translateY(-4%);
+}
+
+/* Message bubble styling */
+.FileiraTextos .mensagem {
+    background: linear-gradient(135deg, #4e7329 80%, #6e8f3d 100%);
+    color: #fff;
+    /* padding: 18px 22px; */
+    padding: 12px 16px;
+    border-radius: 22px 22px 22px 8px;
+    max-width: 70%;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    margin-left: 10px;
+    word-break: break-word;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Message image styling */
+.FileiraTextos .mensagem img {
+    max-width: 220px;
+    max-height: 220px;
+    border-radius: 12px;
+    margin-top: 8px;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+    object-fit: cover;
+    background: #e7e7e7;
+}
+
+
+@media (max-width: 900px) {
+    .FileiraTextos {
+        left: 5%;
+        right: 5%;
+        padding: 10px 5px;
+    }
+
+    .FileiraTextos .mensagem {
+        max-width: 90%;
+        font-size: 0.95rem;
+    }
+}
+
+#imageModal img {
+    transition: transform 0.2s;
+}
+
+#imageModal img:active {
+    transform: scale(0.98);
+}
+
+
+.FileiraTextos::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+.FileiraTextos::-webkit-scrollbar-thumb {
+    background-color: var(--cor-card);
+    border-radius: 10px;
+}
