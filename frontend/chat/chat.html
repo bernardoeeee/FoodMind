@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodMind - Chat</title>
-    <link rel="icon" href="../assets/logo.png">
-    <link rel="stylesheet" href="chat.css">
+    <link rel="icon" href="../assets/logo.png" />
+    <link rel="stylesheet" href="chat.css" />
 </head>
 
 <body>
@@ -17,30 +17,28 @@
 
         <ul class="nav-links">
             <li class="links">
-                <i class="fa-solid fa-house fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <i class="fa-solid fa-house fa-xl" style="--fa-animation-duration: 6s; color: black"></i>
                 <a href="../pagina_principal/index.html">Inicio</a>
             </li>
             <li class="links">
-                <i class="fa-solid fa-cog fa-spin fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <i class="fa-solid fa-cog fa-spin fa-xl" style="--fa-animation-duration: 6s; color: black"></i>
                 <a href="../config/config.html">Configurações</a>
             </li>
             <li class="links">
-                <i class="fa-solid fa-carrot fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <i class="fa-solid fa-carrot fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black"></i>
                 <a href="../planoAlimentar/PA.html">Plano Alimentar</a>
             </li>
             <li class="links">
                 <i class="fa-brands fa-nutritionix fa-bounce fa-xl"
-                    style="--fa-animation-duration: 2s; color: black;"></i>
+                    style="--fa-animation-duration: 2s; color: black"></i>
                 <a href="">Buscar Nutri</a>
             </li>
         </ul>
 
         <button class="btn" onclick="SignUp()">
-            <i class="fa-solid fa-user fa-3x" style="color: black;"></i>
+            <i class="fa-solid fa-user fa-3x" style="color: black"></i>
         </button>
     </header>
-
-
 
     <div id="chat-view" class="view">
         <div class="sidebar">
@@ -49,23 +47,21 @@
         </div>
 
         <div class="FileiraTextos" id="FileiraTextos">
-            <ul id="messages">
-
-            </ul>
+            <ul id="messages"></ul>
         </div>
 
         <div id="chat-window" class="hidden">
             <div class="footer">
-                <form id="chatForm" enctype="multipart/form-data" style="display: flex; gap: 10px;">
+                <form id="chatForm" enctype="multipart/form-data" style="display: flex; gap: 10px">
                     <div class="inputs-container">
                         <input type="text" id="message-input" name="texto" autocomplete="off"
-                            placeholder="Digite sua mensagem">
-                        <label for="file" class="custom-file-upload">
-                            Escolher imagem
-                        </label>
-                        <input placeholder="img" type="file" accept="image/*" name="image" id="image-input">
+                            placeholder="Digite sua mensagem" />
+
+                        <label for="image-input" class="custom-file-upload">Escolher imagem</label>
+
+                        <input type="file" accept="image/*" name="imagem" id="image-input" style="display: none" />
                     </div>
-                    <button class="custom-send-button" id="message-form" type="submit">
+                    <button class="custom-send-button" type="submit">
                         <i class="fa-solid fa-paper-plane fa-2x"></i>
                     </button>
                 </form>
@@ -73,11 +69,24 @@
         </div>
     </div>
 
-
-    <div id="imageModal"
-        style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); align-items:center; justify-content:center;">
-        <img id="modalImg" src="" alt="Zoom"
-            style="max-width:90vw; max-height:90vh; border-radius:12px; box-shadow:0 4px 24px #000;">
+    <div id="imageModal" style="
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        align-items: center;
+        justify-content: center;
+      ">
+        <img id="modalImg" src="" alt="Zoom" style="
+          max-width: 90vw;
+          max-height: 90vh;
+          border-radius: 12px;
+          box-shadow: 0 4px 24px #000;
+        " />
     </div>
 
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>

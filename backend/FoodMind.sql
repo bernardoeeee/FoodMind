@@ -14,9 +14,10 @@ CREATE TABLE mensagem(
     sender VARCHAR(50) NOT NULL,
     recipient VARCHAR(50) NOT NULL,
     message TEXT,
-    image_path VARCHAR(255),
+    image_path text,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender) REFERENCES signUp(email),
     FOREIGN KEY (recipient) REFERENCES signUp(email)
 );
 select * from signUp;
+select * from mensagem;
