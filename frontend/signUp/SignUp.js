@@ -60,9 +60,11 @@ async function signIn(event) {
             if (resultado.success) {
                 alert(resultado.message);
 
-                const { name, email, password } = resultado.user;
+                console.log(resultado.user.id_user);
 
-                localStorage.setItem("Informacoes", JSON.stringify({ name, email, password }));
+                const { id_user, name, email } = resultado.user;
+
+                localStorage.setItem("Informacoes", JSON.stringify({ id_user, name, email }));
 
                 window.location.href = '../pagina_principal/index.html';
             } else {

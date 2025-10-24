@@ -53,23 +53,22 @@ function selectRecipient(user, btn) {
     document.querySelectorAll(".online-user button").forEach((b) => b.classList.remove("selected"));
     if (btn) btn.classList.add("selected");
 
-    // show chat controls
+
     if (chatWindow) chatWindow.classList.remove("hidden");
 
-    // limpa mensagens atuais e carrega histórico
+
     messages.innerHTML = "";
     loadConversation(user);
 }
 
 async function loadConversation(user) {
     if (!user || !user.email || !userInfo) return;
+    console.log(userInfo, user);
     try {
         const res = await fetch(
-            `http://localhost:3001/listar/mensagens?u1=${encodeURIComponent(
-                userInfo.email
-            )}&u2=${encodeURIComponent(user.email)}`
-        );
+            `http://localhost:3001/listar/mensagens?u1=${encodeURIComponent(userInfo.email)}&u2=${encodeURIComponent(user.email)}`);
         const json = await res.json();
+        console.log(json.data);
         if (json.success) {
             messages.innerHTML = "";
             json.data.forEach(renderMessage);
@@ -80,6 +79,7 @@ async function loadConversation(user) {
         console.error("Erro ao carregar conversa", err);
     }
 }
+
 
 chatForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -107,25 +107,32 @@ chatForm.addEventListener("submit", async (e) => {
         }
 
         if (imageFile) {
-            formData.append("imagem", imageFile); // 'imagem' must match server's multer field name
-            console.log("Imagem anexada:", imageFile.name); // Debug log
+            formData.append("imagem", imageFile);
+            console.log("Imagem anexada:", imageFile.name);
         }
 
         const response = await fetch("http://localhost:3001/enviar/mensagem", {
             method: "POST",
-            body: formData, // Don't set Content-Type header - FormData sets it automatically
+            body: formData,
         });
 
         const result = await response.json();
 
         if (result.success) {
+
             messageInput.value = "";
             imageInput.value = "";
+
+
+            renderMessage({
+                ...result.data,
+                sender: userInfo.email,
+                recipient: selectedRecipient.email,
+                name: userInfo.name
+            });
         } else {
             console.error("Erro do servidor:", result);
-            alert(
-                "Erro ao enviar mensagem: " + (result.message || "erro desconhecido")
-            );
+            alert("Erro ao enviar mensagem: " + (result.message || "erro desconhecido"));
         }
     } catch (error) {
         console.error("Erro ao enviar mensagem:", error);
@@ -133,7 +140,7 @@ chatForm.addEventListener("submit", async (e) => {
     }
 });
 
-// socket receives new messages; render only if belongs to current conversation
+
 socket.on("chat message", (msg) => {
     if (!selectedRecipient || !userInfo) return;
     const isBetween =
@@ -142,7 +149,7 @@ socket.on("chat message", (msg) => {
         (msg.sender === selectedRecipient.email &&
             msg.recipient === userInfo.email);
     if (isBetween) {
-        // avoid duplicate if already rendered
+
         const exists = messages.querySelector(`[data-id="${msg.id}"]`);
         if (!exists) {
             renderMessage(msg);
@@ -152,49 +159,74 @@ socket.on("chat message", (msg) => {
 });
 
 function renderMessage(msg) {
+
+    const id = msg.id || msg._id || msg.message_id || msg.id_message;
+
+    if (id && messages.querySelector(`[data-id="${id}"]`)) return;
+
     const li = document.createElement("li");
     li.className = "mensagem";
-    // li.dataset.id = msg.id || '';
+    if (id) li.dataset.id = id;
 
-    // Check if the message is from the current user
-    const isSentByMe = userInfo && msg.sender === userInfo.email;
 
-    // Add the correct class
-    li.classList.add(isSentByMe ? "sent" : "received");
+    const senderEmail = msg.sender || msg.from || msg.email;
+    const senderId = msg.id_user || msg.sender_id || msg.user_id;
+    const text = msg.message || msg.text || msg.texto || msg.mensagem;
+    const imagePath = msg.image || msg.image_path || msg.imagem || msg.path;
+    const senderNameField = msg.name || msg.nome || msg.senderName;
 
-    // Create message content
+    const isSentById = userInfo && senderId && userInfo.id_user === senderId;
+    const isSentByEmail = userInfo && senderEmail && userInfo.email === senderEmail;
+    const isSentByMe = isSentById || isSentByEmail;
+
+
+    li.classList.add(isSentByMe ? "sent" : "recived");
+
     const meta = document.createElement("div");
     meta.className = "msg-meta";
-    const date = msg.createdAt ? new Date(msg.createdAt) : new Date();
-    // Show just the name, not the email
-    const senderName = isSentByMe ? "You" : msg.name || "Other"
+    const rawDate = msg.createdAt || msg.created_at || msg.date;
+    const date = rawDate ? new Date(rawDate) : new Date();
+    const senderName = isSentByMe ? "Você" : (senderNameField || senderEmail || "Anônimo");
     meta.textContent = `${senderName} • ${date.toLocaleString()}`;
     li.appendChild(meta);
 
-    if (msg.message) {
+
+    if (text) {
         const textEl = document.createElement("div");
         textEl.className = "msg-text";
-        textEl.textContent = msg.message;
+        textEl.textContent = text;
         li.appendChild(textEl);
     }
 
-    if (msg.image) {
+
+    if (imagePath) {
         const img = document.createElement("img");
-        img.src =
-            msg.image && msg.image.startsWith("http")
-                ? msg.image
-                : `http://localhost:3001${msg.image}`;
+        let src = imagePath;
+
+
+        if (src.startsWith("/")) {
+            src = `http://localhost:3001${src}`;
+        } else if (!/^https?:\/\//i.test(src)) {
+
+            src = `http://localhost:3001/${src}`;
+        }
+
+        img.src = src;
+        img.alt = senderName + " - imagem";
         img.className = "chat-image";
         img.style.maxWidth = "300px";
         img.style.cursor = "zoom-in";
         img.onclick = () => openImageModal(img.src);
         li.appendChild(img);
+        console.log("Imagem adicionada à mensagem:", img.src);
     }
 
     messages.appendChild(li);
+
+    messages.scrollTop = messages.scrollHeight;
 }
 
-// Image modal functions
+
 function openImageModal(imageSrc) {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
@@ -202,7 +234,7 @@ function openImageModal(imageSrc) {
     modalImg.src = imageSrc;
 }
 
-// close modal on click outside
+
 const imageModal = document.getElementById("imageModal");
 if (imageModal) {
     imageModal.addEventListener("click", function (e) {

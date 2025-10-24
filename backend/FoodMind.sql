@@ -14,10 +14,19 @@ CREATE TABLE mensagem(
     sender VARCHAR(50) NOT NULL,
     recipient VARCHAR(50) NOT NULL,
     message TEXT,
-    image_path text,
+    image_path TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender) REFERENCES signUp(email),
     FOREIGN KEY (recipient) REFERENCES signUp(email)
 );
 select * from signUp;
 select * from mensagem;
+select s.name, m.sender, m.recipient 
+from mensagem AS m
+INNER JOIN signUp AS s
+ON s.email = m.sender;
+
+select s.name, m.message, m.image_path
+from mensagem AS m
+INNER JOIN signUp AS s
+ON s.email = m.sender;
