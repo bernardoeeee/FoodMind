@@ -182,7 +182,7 @@ header {
     left: 0;
     top: 20%;
     bottom: 60px;
-    width: 15%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -300,35 +300,142 @@ header {
     border-radius: 10px;
 }
 
-/* Responsive Design */
 @media (max-width: 900px) {
-    .FileiraTextos {
-        left: 30%;
+
+    /* HEADER */
+    header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        text-align: center;
     }
 
+    .nav-logo {
+        height: 10vh;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+
+    /* SIDEBAR (USUÁRIOS ONLINE) */
     .sidebar {
-        width: 25%;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #c7d7b5;
+        padding: 10px 15px;
+        background-color: var(--cor-caixa);
+        text-align: center;
+        border-radius: 0;
     }
 
-    .footer {
-        left: 30%;
+    .sidebar h3 {
+        font-size: 1.2rem;
+        color: var(--cor-fundo);
+        margin-bottom: 10px;
+    }
+
+    #user-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+    }
+
+    #user-list li {
+        background: var(--cor-fundo);
+        padding: 5px 10px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* ÁREA DE MENSAGENS */
+    .FileiraTextos {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin-top: 10px;
+        height: 55vh;
+        border-radius: 12px;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f4f8ee;
+        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.08);
     }
 
     .mensagem {
-        max-width: 80%;
-    }
-}
-
-@media (max-width: 600px) {
-    .FileiraTextos {
-        left: 5%;
+        max-width: 85%;
+        font-size: 0.9rem;
     }
 
-    .sidebar {
-        display: none;
-    }
-
+    /* FOOTER / INPUT */
     .footer {
-        left: 5%;
+        position: relative;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: var(--cor-fundo);
+        padding: 10px;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .inputs-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .footer input[type="text"] {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .custom-file-upload {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border-radius: 15px;
+    }
+
+    .custom-send-button {
+        padding: 10px 14px;
+        border-radius: 50%;
+        background: var(--cor-botoes);
+        align-self: center;
+    }
+
+    /* AJUSTES GERAIS */
+    body {
+        overflow-x: hidden;
+    }
+
+    #chat-view {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

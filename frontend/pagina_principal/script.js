@@ -16,6 +16,7 @@ function GoToGitHub(url) {
     window.open(url, '_blank');
 
 }
+// Add to your script.js
 
 const receitas = [
     {
@@ -61,6 +62,8 @@ const modalHowToMake = document.getElementById('modalHowToMake');
 const modalSteps = document.getElementById('modalSteps');
 const closeBtn = document.getElementById('closeModal');
 
+modal.addEventListener('show', () => document.body.classList.add('modal-open'));
+modal.addEventListener('hide', () => document.body.classList.remove('modal-open'));
 
 cards.forEach((card, index) => {
     card.addEventListener('click', () => {

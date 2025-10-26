@@ -6,7 +6,7 @@ CREATE TABLE signUp (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(10) NOT NULL,
-    profile_image VARCHAR(255)
+    profile_image TEXT
 );
 
 CREATE TABLE mensagem(
@@ -21,6 +21,7 @@ CREATE TABLE mensagem(
 );
 select * from signUp;
 select * from mensagem;
+
 select s.name, m.sender, m.recipient 
 from mensagem AS m
 INNER JOIN signUp AS s

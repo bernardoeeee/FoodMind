@@ -162,6 +162,22 @@ header {
     box-sizing: border-box;
 }
 
+.modal-field .custom-file-upload {
+    padding: 5px 20px;
+    background: var(--cor-botoes);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 180px;
+    transition: all 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    transform: translateY(-2px);
+    background: #8a9934;
+}
+
 .botaoEditar {
     background-color: var(--cor-botoes);
     color: white;

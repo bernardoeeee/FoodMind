@@ -34,7 +34,7 @@ async function signUp(event) {
 
     if (results.success) {
         alert(results.message)
-        localStorage.setItem("Informacoes", JSON.stringify(results.data))
+        // localStorage.setItem("Informacoes", JSON.stringify(results.data))
     } else {
         console.log(message)
     }
@@ -62,9 +62,9 @@ async function signIn(event) {
 
                 console.log(resultado.user.id_user);
 
-                const { id_user, name, email } = resultado.user;
+                const { id_user, name, email, password, profile_image } = resultado.user;
 
-                localStorage.setItem("Informacoes", JSON.stringify({ id_user, name, email }));
+                localStorage.setItem("Informacoes", JSON.stringify({ id_user, name, email, password, profile_image }));
 
                 window.location.href = '../pagina_principal/index.html';
             } else {

@@ -24,11 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
+            const imageHtml = dados.profile_image
+                ? `<img class="photo" src="http://localhost:3001${dados.profile_image}" alt="imagem usuario" draggable="false">`
+                : `<img class="photo" src="/frontend/assets/pablito.jpg" alt="imagem usuario" draggable="false">`;
+
             container.innerHTML = `
-                <img class="photo" src="/frontend/assets/25.jpg" alt="imagem usuario" draggable="false">
-                ${infoHtml}
-                ${botoesHtml}
-            `;
+                        ${imageHtml}
+                        ${infoHtml}
+                        ${botoesHtml}`;
 
             // Add this block to handle modal opening
             const closeBtn = document.getElementById('closeModal');
@@ -53,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function remover(email) {
-    console.log(email); 
+    console.log(email);
     const response = await fetch(`http://localhost:3001/remover/${email}`, {
         method: 'DELETE'
     });
@@ -71,24 +74,39 @@ async function remover(email) {
 
 async function edit(event) {
     event.preventDefault();
+
     const name = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('senha').value;
-    const data = { name, email, password }
-    const response = await fetch(`http://localhost:3001/edit/${localStorage.getItem("Informacoes") ? JSON.parse(localStorage.getItem("Informacoes")).email : email}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
+    const imageFile = document.getElementById('image-input').files[0];
 
-    const results = await response.json();
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+    if (imageFile) {
+        formData.append('profile_image', imageFile);
+    }
 
-    if (results.success) {
-        localStorage.setItem("Informacoes", JSON.stringify(results.data));
-        window.location.href = "../index.html";
-    } else {
-        alert(results.message || 'Erro ao editar o usuário!');
+    const currentEmail = JSON.parse(localStorage.getItem("Informacoes"))?.email || email;
+
+    try {
+        const response = await fetch(`http://localhost:3001/edit/${currentEmail}`, {
+            method: 'PUT',
+            body: formData
+        });
+
+        const results = await response.json();
+        console.log('Edit response:', results);
+
+        if (results.success) {
+            localStorage.setItem("Informacoes", JSON.stringify(results.data));
+            window.location.href = "../index.html";
+        } else {
+            alert(results.message || 'Erro ao editar o usuário!');
+        }
+    } catch (error) {
+        console.error('Error editing profile:', error);
+        alert('Erro ao editar o perfil');
     }
 }

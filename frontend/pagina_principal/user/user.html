@@ -24,13 +24,16 @@
             <div id="Informacoes" class="description"></div>
         </div>
     </main>
-    <!-- <button class="botaoEditar">Salvar</button> -->
 
     <div id="modal" class="modal">
         <div class="modal-content">
             <span id="closeModal" class="close">&times;</span>
             <h2>Editar Usuario</h2>
             <form>
+                <div class="modal-field">
+                    <label class="custom-file-upload" for="image-input">Foto de perfil</label>
+                    <input type="file" id="image-input" accept="image/*" name="image" style="display: none;">
+                </div>
                 <div class="modal-field">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome">
@@ -46,7 +49,7 @@
                 <button class="botaoEditar" onclick="edit(event)">Salvar</button>
             </form>
         </div>
-        
+
     </div>
 
 

@@ -6,23 +6,16 @@ const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
 
-// =======================
-// Express setup
-// =======================
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// =======================
-// HTTP Server setup
-// =======================
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
 
-// =======================
-// Socket.io setup
-// =======================
+
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -30,9 +23,7 @@ const io = new Server(server, {
   },
 });
 
-// =======================
-// Multer config (upload)
-// =======================
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, "..", "uploads"));
@@ -43,12 +34,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Serve uploaded files
+
 app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
-// =======================
-// Rotas de autenticação
-// =======================
+
 app.post("/cadastro/signUp", (req, res) => {
   const { name, email, password } = req.body;
   const query = "INSERT INTO signUp(name, email, password) VALUES(?,?,?)";
@@ -111,50 +100,50 @@ app.delete("/remover/:email", (req, res) => {
   });
 });
 
-app.put("/edit/:email", (req, res) => {
+// Replace the existing edit endpoint with this:
+app.put("/edit/:email", upload.single('profile_image'), (req, res) => {
   const emailAntigo = req.params.email;
   const { name, email, password } = req.body;
+  const profile_image = req.file ? `/uploads/${req.file.filename}` : null;
 
-  console.log("Recebendo requisição para editar:", {
+  console.log("Editing user:", {
+    emailAntigo,
     name,
     email,
     password,
-    emailAntigo,
+    profile_image
   });
 
-  const query =
-    "UPDATE signUp SET name = ?, email = ?, password = ? WHERE email = ?;";
-  connection.query(query, [name, email, password, emailAntigo], (err) => {
+  const query = "UPDATE signUp SET name = ?, email = ?, password = ?, profile_image = ? WHERE email = ?";
+
+  connection.query(query, [name, email, password, profile_image, emailAntigo], (err) => {
     if (err) {
-      return res
-        .status(500)
-        .json({ success: false, message: "Erro ao editar usuário (server)." });
+      console.error("Error updating user:", err);
+      return res.status(500).json({
+        success: false,
+        message: "Erro ao editar usuário.",
+        error: err.message
+      });
     }
 
-    // Buscar usuário atualizado
-    connection.query(
-      "SELECT * FROM signUp WHERE email = ?",
-      [email],
-      (err, results) => {
-        if (err || results.length === 0) {
-          return res.status(500).json({
-            success: false,
-            message: "Erro ao buscar usuário editado.",
-          });
-        }
-        res.json({
-          success: true,
-          message: "Usuário editado com sucesso! (server)",
-          data: results[0],
+    // Fetch updated user data
+    connection.query("SELECT * FROM signUp WHERE email = ?", [email], (err, results) => {
+      if (err || results.length === 0) {
+        return res.status(500).json({
+          success: false,
+          message: "Erro ao buscar usuário editado."
         });
       }
-    );
+      res.json({
+        success: true,
+        message: "Usuário editado com sucesso!",
+        data: results[0]
+      });
+    });
   });
 });
 
-// =======================
-// Rota: enviar mensagem (texto + imagem)
-// =======================
+
 app.post("/enviar/mensagem", upload.single("imagem"), (req, res) => {
   const sender = req.body.sender || null;
   const recipient = req.body.recipient || null;
@@ -178,7 +167,7 @@ app.post("/enviar/mensagem", upload.single("imagem"), (req, res) => {
         });
       }
 
-      // Buscar mensagem recém inserida
+
       connection.query(
         "SELECT * FROM mensagem WHERE id = ?",
         [results.insertId],
@@ -223,9 +212,6 @@ app.post("/enviar/mensagem", upload.single("imagem"), (req, res) => {
   );
 });
 
-// =======================
-// Rota: listar mensagens entre dois usuários
-// =======================
 app.get("/listar/mensagens", (req, res) => {
   const u1 = req.query.u1;
   const u2 = req.query.u2;
@@ -256,14 +242,12 @@ app.get("/listar/mensagens", (req, res) => {
   });
 });
 
-// =======================
-// Socket.io Handlers
-// =======================
+
 io.on("connection", (socket) => {
   console.log("Usuário conectado:", socket.id);
 
   socket.on("user login", (userData) => {
-    // envia lista de usuários (front filtra se quiser)
+
     connection.query("SELECT email, name FROM signUp", (err, users) => {
       if (!err) {
         io.emit("online users", users);
