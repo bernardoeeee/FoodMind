@@ -15,6 +15,10 @@ function GoToMacro() {
     window.location.href = "../macronutrientes/macro.html";
 }
 
+function GoToReminders() {
+    window.location.href = "../lembretes/lembretes.html";
+}
+
 // document.addEventListener("DOMContentLoaded", () => {
 //     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 

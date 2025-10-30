@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+    --cor-texto: #0B3142;
+    --cor-botoes: #78832d;
+    --cor-card: #4b810a;
+    --cor-caixa: #889d45;
+    --cor-fundo: #FFFFF2;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    font-family: "Geist Mono", monospace;
+    color: var(--cor-texto);
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+header {
+    background-color: var(--cor-caixa);
+    /* max-width: 1200px; */
+    margin: auto;
+    /* padding: 2rem 1rem; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+}
+
+.nav-logo {
+    display: flex;
+    height: 15vh;
+    width: auto;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+}
+
+.links a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: var(--cor-fundo);
+    font-size: large;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #2F5233;
+    transition: all 0.3s ease;
+}
+
+.links a:hover::after {
+    width: 75%;
+}
+
+.links i {
+    margin-right: 5px;
+    /* display: flex; */
+    align-items: center;
+}
+
+.btn {
+    background: transparent;
+    color: black;
+    display: flex;
+    margin-right: 30px;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+
+.container {
+    width: 800px;
+    height: 500px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+        "sidebar";
+}
+
+.title-changeProfile {
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    margin-top: 5rem;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-right: 2px solid black;
+}
+
+.sidebar button {
+    background-color: #fffff5;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+.sidebar button:hover {
+    background-color: var(--cor-botoes);
+    transform: translateY(-10%);
+}
+
+.conteudo-personalizacao {
+    position: absolute;
+    top: 28%;
+    left: 20%;
+    right: 20px;
+    bottom: 120px;
+    size-adjust: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 25px 20px;
+    border-radius: 18px;
+}
+
+.conteudo-personalizacao::-webkit-scrollbar-thumb {
+    background-color: var(--cor-card);
+    border-radius: 10px;
+}
+
+.conteudo-personalizacao::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+.secao {
+    background-color: #f6f6e7;
+    padding: 20px;
+    border: 1px solid var(--cor-card);
+    border-radius: 15px;
+}
+
+.secao h3 {
+    color: var(--cor-caixa);
+    margin-bottom: 10px;
+}
+
+.opcoes label {
+    display: block;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #F4F4F4;
+    padding: 2%;
+    width: 90%;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* CALENDÁRIO - CENTRALIZAR */
+.calendar-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CALENDÁRIO - FONTE */
+#calendar {
+    font-size: 15px;
+}
+
+/* SETAS DE AVANÇAR/VOLTAR MÊS */
+.month-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.month-nav h2 {
+    margin: 0;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.month-nav button:hover {
+    color: #B19FF9;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+/* DIAS DA SEMANA */
+tr {
+    font-size: 14px;
+}
+
+/* DIA SELECIONADO */
+.selected {
+    background-color: var(--cor-caixa);
+    border-radius: 50%;
+}
+
+.event-container {
+    margin: 20px;
+    text-align: center;
+}
+
+#event-list {
+    list-style: none;
+    padding: 0;
+}
+
+#event-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    background-color: #F4F4F4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.event-details p {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.event-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.edit-btn {
+    color: var(--cor-botoes);
+}
+
+.delete-btn {
+    color: red;
+}
+
+/* "Não há eventos"*/
+#no-event {
+    /* margin: 30px 0; */
+    font-size: 16px;
+    padding: 6%;
+    color: #9D9D9D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    background-color: #F4F4F4;
+}
+
+#no-event i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="time"],
+.modal-content input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.centConsulta {
+    display: flex;
+    justify-content: center;
+}
+
+/* ADICIONAR CONSULTA */
+#openForm {
+    background-color: var(--cor-caixa);
+    color: white;
+    border: none;
+    padding: 10px 141px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* MODAL DE ADICIONAR EVENTO */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 75%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    width: 70%;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* BOTÃO DE SALVAR */
+#saveEvent {
+    border: none;
+    background-color: var(--cor-botoes);
+    color: white;
+    padding: 8px 110px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* FECHAR MODAL - X*/
+#closeForm {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}

@@ -15,6 +15,9 @@ function GoToChanceProfile() {
     window.location.href = "../personalizar_perfil/personalizarPerfil.html";
 }
 
+function GoToReminders() {
+    window.location.href = "../lembretes/lembretes.html";
+}
 const ctx = document.getElementById('graficoMacronutrientes').getContext('2d');
 new Chart(ctx, {
     type: 'pie',

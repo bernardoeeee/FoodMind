@@ -243,6 +243,134 @@ app.get("/listar/mensagens", (req, res) => {
 });
 
 
+
+// AGENDA (EVENTOS)
+
+// Criar
+app.post('/eventos/salvar', (request, response) => {
+  const { email, dia, hora, descricao } = request.body;
+
+  if (!email || !dia || !hora || !descricao) {
+    return response.status(400).json({
+      success: false,
+      message: "Dados incompletos para salvar o evento."
+    });
+  }
+
+  const params = [id_usuario, dia, hora, descricao];
+  const query = "INSERT INTO eventos (email, dia, hora, descricao) VALUES (?, ?, ?, ?);";
+
+  connection.query(query, params, (err, results) => {
+    if (results) {
+      response
+        .status(201)
+        .json({
+          success: true,
+          message: "Evento salvo com sucesso!",
+          data: { id: results.insertId, ...request.body }
+        });
+    } else {
+      response.status(400).json({
+        success: false,
+        message: "Erro ao salvar evento no banco de dados.",
+        data: err
+      });
+    }
+  });
+});
+
+// Listar
+app.get('/eventos/listar/:email', (request, response) => {
+  const { email } = request.params;
+
+  const query = "SELECT email, dia, hora, descricao FROM eventos WHERE email = ? ORDER BY dia, hora ASC;";
+
+  connection.query(query, [email], (err, results) => {
+    if (results) {
+      response
+        .status(200)
+        .json({
+          success: true,
+          message: "Eventos carregados com sucesso.",
+          data: results
+        });
+    } else {
+      response
+        .status(400)
+        .json({
+          success: false,
+          message: "Erro ao buscar eventos.",
+          data: err
+        });
+    }
+  });
+});
+
+// Editar
+app.put('/agenda/evento/editar/:id', (request, response) => {
+  const id = request.params.id;
+  const { dia, hora, descricao } = request.body;
+
+  if (!dia || !hora || !descricao) {
+    return response.status(400).json({
+      success: false,
+      message: "Dados incompletos para a edição do evento."
+    });
+  }
+
+  const query = `
+      UPDATE eventos
+      SET dia = ?, hora = ?, descricao = ?
+      WHERE id_evento = ?;
+  `;
+
+  connection.query(query, [dia, hora, descricao, id], (err, results) => {
+    if (err) {
+      return response.status(400).json({
+        success: false,
+        message: "Erro ao atualizar o evento",
+        data: err
+      });
+    }
+    response.status(200).json({
+      success: true,
+      message: "Evento atualizado com sucesso!",
+      data: results
+    });
+  });
+});
+
+// Excluir
+app.delete('/agenda/evento/deletar/:id', (request, response) => {
+  let id = request.params.id;
+
+  let query = "DELETE FROM eventos WHERE id_evento = ?;"
+
+  connection.query(query, [id], (err, results) => {
+    if (err) {
+      return response.status(400).json({
+        success: false,
+        message: "Erro ao excluir evento",
+        data: err
+      });
+    }
+
+    if (results.affectedRows === 0) {
+      return response.status(404).json({
+        success: false,
+        message: "Evento não encontrado."
+      });
+    }
+
+    response.status(200).json({
+      success: true,
+      message: "Evento excluído com sucesso!",
+      data: results
+    });
+  });
+});
+
+
 io.on("connection", (socket) => {
   console.log("Usuário conectado:", socket.id);
 
@@ -259,3 +387,5 @@ io.on("connection", (socket) => {
     console.log("Usuário desconectado:", socket.id);
   });
 });
+
+

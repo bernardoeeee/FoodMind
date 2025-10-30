@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lembretes.css">
+    <link rel="icon" href="/frontend/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Lembretes</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <img src="/frontend/assets/logo.png" alt="" draggable="false" />
+        </div>
+
+        <ul class="nav-links">
+            <li class="links">
+                <i class="fa-solid fa-house fa-xl" style="--fa-animation-duration: 6s; color: black;"></i>
+                <a href="/frontend/pagina_principal/index.html">Inicio</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-carrot fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="/frontend/planoAlimentar/PA.html">Plano Alimentar</a>
+            </li>
+            <li class="links">
+                <i class="fa-brands fa-nutritionix fa-bounce fa-xl"
+                    style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="">Buscar Nutri</a>
+            </li>
+            <li class="links">
+                <i class="fa-solid fa-message fa-bounce fa-xl" style="--fa-animation-duration: 2s; color: black;"></i>
+                <a href="/frontend/chat/chat.html">Chat</a>
+            </li>
+        </ul>
+
+        <button class="btn" onclick="SignUp()">
+            <i class="fa-solid fa-user fa-3x" style="color: black;"></i>
+        </button>
+    </header>
+
+    <main>
+        <div class="title-changeProfile">
+            <h2>Lembretes</h2>
+        </div>
+        <div class="container">
+            <div class="sidebar">
+                <button onclick="GoToConfig()">Configurações</button>
+                <button onclick="GoToChanceProfile()">Personalizar Perfil</button>
+                <button onclick="GoToMacro()">Macronutrientes</button>
+            </div>
+        </div>
+
+
+        <div class="conteudo-personalizacao">
+
+            <!-- Objetivos Pessoais -->
+            <section class="secao">
+                <div class="calendar-main">
+                    <div class="calendar-container">
+                        <div class="month-nav">
+                            <i id="prevMonth" class="fa-solid fa-angle-up fa-rotate-by fa-1xl"
+                                style="color: #9d9d9d; --fa-rotate-angle: 270deg;"></i>
+                            <h2 id="monthYear"></h2>
+                            <i id="nextMonth" class="fa-solid fa-angle-up fa-rotate-by fa-1xl"
+                                style="color: #9d9d9d; --fa-rotate-angle: 450deg;"></i>
+                        </div>
+                        <table id="calendar">
+                            <thead>
+                                <tr>
+                                    <th>DOM.</th>
+                                    <th>SEG.</th>
+                                    <th>TER.</th>
+                                    <th>QUA.</th>
+                                    <th>QUI.</th>
+                                    <th>SEX.</th>
+                                    <th>SÁB.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendar-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="event-container">
+                    <p id="no-event"><i class="fa-regular fa-calendar-days"></i> Não há eventos para hoje.</p>
+                    <ul id="event-list"></ul>
+                </div>
+
+                <div class="centConsulta">
+                    <button id="openForm">Adicionar Evento</button>
+                </div>
+
+
+                <div class="modal" id="modal">
+                    <div class="modal-content" id="modal-form">
+                        <span id="closeForm">&times;</span>
+                        <h3>Adicionar Evento</h3>
+                        <input type="text" id="event-description" placeholder="Consulta/Evento">
+                        <input type="date" id="event-date"> <input type="time" id="event-time">
+                        <button id="saveEvent">Salvar</button>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+        </div>
+
+
+    </main>
+
+    <script src="lembretes.js"></script>
+</body>
+
+</html>

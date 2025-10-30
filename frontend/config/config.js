@@ -15,3 +15,6 @@ function GoToProfileChanges(){
 function GoToMacro() {
     window.location.href = "../config/macronutrientes/macro.html";
 }
+function GotoReminders() {
+    window.location.href = "../config/lembretes/lembretes.html";
+}

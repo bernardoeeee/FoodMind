@@ -19,6 +19,17 @@ CREATE TABLE mensagem(
     FOREIGN KEY (sender) REFERENCES signUp(email),
     FOREIGN KEY (recipient) REFERENCES signUp(email)
 );
+
+CREATE TABLE eventos (
+	id_evento int auto_increment primary key,
+	email varchar(255),
+    dia date not null,
+    hora time not null,
+    descricao varchar(255) not null,
+    FOREIGN KEY (email) REFERENCES signUp(email)
+
+);
+ 
 select * from signUp;
 select * from mensagem;
 
