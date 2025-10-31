@@ -21,7 +21,7 @@ body {
     background-color: var(--cor-fundo);
     font-family: "Geist Mono", monospace;
     color: var(--cor-texto);
-    height: 100vh;  
+    height: 100vh;
     overflow-y: hidden;
 }
 
@@ -112,33 +112,39 @@ a {
     justify-content: center;
 }
 
-
 .sidebar {
-    grid-area: sidebar;
+    position: fixed;
+    left: 0;
+    top: 20%;
+    bottom: 60px;
+    width: 15%;
     display: flex;
-    margin-top: 5rem;
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    border-right: 2px solid black;
+    border-right: 2px solid #c7d7b5;
+    background: var(--cor-fundo);
 }
 
 .sidebar button {
     background-color: #fffff5;
-    border: 1px solid black;
+    border: 1px solid #c7d7b5;
     margin-bottom: 1rem;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
     text-align: center;
     font-size: 16px;
     border-radius: 20px;
-    transition: all 0.5s ease-in-out;
+    width: 80%;
+    transition: all 0.3s ease-in-out;
 }
 
 .sidebar button:hover {
     background-color: var(--cor-botoes);
-    transform: translateY(-10%);
+    color: white;
+    transform: translateY(-4px);
 }
+
 
 .conteudo-personalizacao {
     position: absolute;

@@ -257,7 +257,8 @@ app.post('/eventos/salvar', (request, response) => {
     });
   }
 
-  const params = [id_usuario, dia, hora, descricao];
+  // Corrige parâmetros: a tabela espera (email, dia, hora, descricao)
+  const params = [email, dia, hora, descricao];
   const query = "INSERT INTO eventos (email, dia, hora, descricao) VALUES (?, ?, ?, ?);";
 
   connection.query(query, params, (err, results) => {
@@ -283,7 +284,7 @@ app.post('/eventos/salvar', (request, response) => {
 app.get('/eventos/listar/:email', (request, response) => {
   const { email } = request.params;
 
-  const query = "SELECT email, dia, hora, descricao FROM eventos WHERE email = ? ORDER BY dia, hora ASC;";
+  const query = "SELECT id_evento, email, dia, hora, descricao FROM eventos WHERE email = ? ORDER BY dia, hora ASC;";
 
   connection.query(query, [email], (err, results) => {
     if (results) {

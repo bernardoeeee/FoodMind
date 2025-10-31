@@ -114,30 +114,36 @@ a {
 
 
 .sidebar {
-    grid-area: sidebar;
+    position: fixed;
+    left: 0;
+    top: 20%;
+    bottom: 60px;
+    width: 15%;
     display: flex;
-    margin-top: 5rem;
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    border-right: 2px solid black;
+    border-right: 2px solid #c7d7b5;
+    background: var(--cor-fundo);
 }
 
 .sidebar button {
     background-color: #fffff5;
-    border: 1px solid black;
+    border: 1px solid #c7d7b5;
     margin-bottom: 1rem;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
     text-align: center;
     font-size: 16px;
     border-radius: 20px;
-    transition: all 0.5s ease-in-out;
+    width: 80%;
+    transition: all 0.3s ease-in-out;
 }
 
 .sidebar button:hover {
     background-color: var(--cor-botoes);
-    transform: translateY(-10%);
+    color: white;
+    transform: translateY(-4px);
 }
 
 .conteudo-personalizacao {
@@ -334,7 +340,6 @@ tr {
     justify-content: center;
 }
 
-/* ADICIONAR CONSULTA */
 #openForm {
     background-color: var(--cor-caixa);
     color: white;
@@ -344,29 +349,34 @@ tr {
     cursor: pointer;
 }
 
-/* MODAL DE ADICIONAR EVENTO */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
-    padding-top: 75%;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1rem;
 }
 
 .modal-content {
-    background-color: white;
-    margin: auto;
+    background-color: #fff;
+    color: var(--cor-texto);
     padding: 20px;
-    width: 70%;
-    border-radius: 10px;
+    border-radius: 12px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     position: relative;
+    z-index: 10000;
 }
 
-/* BOTÃO DE SALVAR */
+.modal.open {
+    display: flex;
+}
+
+
 #saveEvent {
     border: none;
     background-color: var(--cor-botoes);
@@ -374,13 +384,17 @@ tr {
     padding: 8px 110px;
     border-radius: 10px;
     margin-top: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* FECHAR MODAL - X*/
+
 #closeForm {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    right: 12px;
+    top: 12px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.4rem;
 }

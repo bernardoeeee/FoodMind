@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const imageHtml = dados.profile_image
                 ? `<img class="photo" src="http://localhost:3001${dados.profile_image}" alt="imagem usuario" draggable="false">`
-                : `<img class="photo" src="/frontend/assets/pablito.jpg" alt="imagem usuario" draggable="false">`;
+                : `<img class="photo" src="/frontend/assets/max.jpg" alt="imagem usuario" draggable="false">`;
 
             container.innerHTML = `
                         ${imageHtml}

@@ -32,7 +32,7 @@ CREATE TABLE eventos (
  
 select * from signUp;
 select * from mensagem;
-
+select * from eventos;
 select s.name, m.sender, m.recipient 
 from mensagem AS m
 INNER JOIN signUp AS s
