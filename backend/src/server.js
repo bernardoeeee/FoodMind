@@ -86,6 +86,8 @@ app.post("/cadastro/signIn", (req, res) => {
   });
 });
 
+
+
 app.delete("/remover/:email", (req, res) => {
   const { email } = req.params;
   const query = "DELETE FROM signUp WHERE email = ?;";
@@ -100,7 +102,8 @@ app.delete("/remover/:email", (req, res) => {
   });
 });
 
-// Replace the existing edit endpoint with this:
+
+
 app.put("/edit/:email", upload.single('profile_image'), (req, res) => {
   const emailAntigo = req.params.email;
   const { name, email, password } = req.body;
