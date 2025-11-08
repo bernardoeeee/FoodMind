@@ -28,7 +28,8 @@ CREATE TABLE eventos (
     descricao varchar(255) not null,
     FOREIGN KEY (email) REFERENCES signUp(email)
 );
-drop table eventos;
+
+
 select * from signUp;
 select * from mensagem;
 select * from eventos;
@@ -46,14 +47,5 @@ INNER JOIN signUp AS s
 ON s.email = m.sender;
 
 
--- 1) ver nome da FK (opcional)
-SHOW CREATE TABLE mensagem;
 
--- 2) remover as FKs (use os nomes reais mostrados pelo SHOW CREATE TABLE, aqui são exemplos)
-ALTER TABLE mensagem DROP FOREIGN KEY mensagem_ibfk_1;
-ALTER TABLE mensagem DROP FOREIGN KEY mensagem_ibfk_2;
-
--- 3) recriar com CASCADE
-ALTER TABLE mensagem
-  ADD CONSTRAINT fk_mensagem_sender FOREIGN KEY (sender) REFERENCES signUp(email) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT fk_mensagem_recipient FOREIGN KEY (recipient) REFERENCES signUp(email) ON DELETE CASCADE ON UPDATE CASCADE;
+  
