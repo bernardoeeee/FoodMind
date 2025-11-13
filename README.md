@@ -1,5 +1,5 @@
 ﻿
-# FOODMIND — SISTEMA DE GESTÃO DE PERFIL, MENSAGENS E AGENDA PESSOAL
+# FOODMIND
 
 ## 1. Introdução
 
@@ -218,4 +218,5 @@ Abra o frontend (localmente) em `frontend/index.html` utilizando a extensão **L
 
 O **FoodMind** foi projetado para oferecer uma solução integrada de **acompanhamento nutricional**, **organização pessoal** e **comunicação via chat**, com uma arquitetura modular e escalável.  
 O código adota boas práticas de separação de responsabilidades, permitindo futuras expansões, como autenticação JWT, encriptação de senhas e integração com APIs de nutrição ou saúde mental.
+
 
